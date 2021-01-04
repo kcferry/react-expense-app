@@ -7,7 +7,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const config = {
     entry:'./src/app.js',
     output: {
-        path:path.join(__dirname,'public'),
+        path:path.join(__dirname,'public', 'dist'),
         filename: 'bundle.[hash].js'
     },
     plugins: [new HtmlWebpackPlugin({template: './index.html'})],
@@ -28,7 +28,7 @@ const config = {
     },
     devtool: 'eval-cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.resolve(__dirname, 'public','dist'),
         historyApiFallback: true,
         compress: true,
         port: 9000
