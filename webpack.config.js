@@ -46,7 +46,13 @@ const config = {
                 'css-loader',
                 'sass-loader'
             ]
-        }]
+        },  {
+            test: /\.(png|svg|jpg|gif|pdf)$/,
+            use: [
+             'file-loader'
+            ]
+        }
+        ]
     },
     devtool: 'eval-cheap-module-source-map',
     devServer: {
