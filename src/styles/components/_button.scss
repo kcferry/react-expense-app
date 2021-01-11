@@ -17,3 +17,8 @@
 .button:focus{  
     outline: none;
  }
+
+ .button--remove{
+    @extend .button;
+    background-color: #888888;
+ }
