@@ -1,0 +1,19 @@
+.button {
+    background: $light-blue;
+    font-weight: 300;
+    display: inline-block ;
+    font-size: $font-size-large;
+    padding: $s-size $l-size;
+    color: white;
+    line-height: 1;
+    border: none;
+    text-decoration: none;
+}
+
+.button-link {
+    background: none;
+}
+
+.button:focus{  
+    outline: none;
+ }
