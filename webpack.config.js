@@ -49,7 +49,16 @@ const config = {
         },  {
             test: /\.(png|svg|jpg|gif|pdf)$/,
             use: [
-             'file-loader'
+                    {
+                        loader: "file-loader", 
+                        options: {
+                        name: '[name].[ext]',
+                        outputPath: "/public/images",
+                        }
+                    },
+                    {
+                        loader: 'url-loader?limit=8192'
+                    }
             ]
         }
         ]
