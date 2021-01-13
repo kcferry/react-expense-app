@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 if(process.env.NODE_ENV === 'test') {
@@ -17,6 +18,7 @@ if(process.env.NODE_ENV === 'test') {
 const config = {
     entry:['babel-polyfill','./src/app.js'],
     output: {
+        publicPath: '',
         path:path.join(__dirname,'public', 'dist'),
         filename: 'bundle.[hash].js'
     },
@@ -39,27 +41,21 @@ const config = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
-        }, {
+        }, 
+        {
             test:/\.s?css$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                'sass-loader'
-            ]
-        },  {
-            test: /\.(png|svg|jpg|gif|pdf)$/,
-            use: [
-                    {
-                        loader: "file-loader", 
-                        options: {
-                        name: '[name].[ext]',
-                        outputPath: "/public/images",
-                        }
-                    },
-                    {
-                        loader: 'url-loader?limit=8192'
-                    }
-            ]
+            use: ["style-loader", 'css-loader', "sass-loader"]
+        },
+        {
+            test: /\.(png|jpe?g|gif)$/i,
+            loader: 'file-loader',
+            options: {
+                publicPath: './public/dist/images/loader.gif',
+            },
+            loader: 'url-loader',
+                options: {
+                  limit: 8192,
+                },
         }
         ]
     },
@@ -80,5 +76,3 @@ if(currentTask == "build"){
 }
  
 module.exports = config
-
-
