@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { startLoginGoogle, startLoginGithub } from '../actions/auth'
+import { startLoginGoogle, startLoginGithub, startLoginTwitter } from '../actions/auth'
 
-export const LoginPage = ({startLoginGoogle, startLoginGithub}) => (
+export const LoginPage = ({startLoginGoogle, startLoginGithub, startLoginTwitter}) => (
     <div className="box-layout">
         <div className="box-layout__box">
             <h1 className="box-layout__title">Expensify</h1>
@@ -10,6 +10,7 @@ export const LoginPage = ({startLoginGoogle, startLoginGithub}) => (
             <div className='box-layout__buttons'>
                 <button onClick={startLoginGoogle} className="button">Login with Google</button>
                 <button onClick={startLoginGithub} className="button">Login with GitHub</button>
+                <button onClick={startLoginTwitter} className="button">Login with Twitter</button>
             </div>
         </div>
     </div>
@@ -17,7 +18,8 @@ export const LoginPage = ({startLoginGoogle, startLoginGithub}) => (
 
 const mapDispatchToProps = (dispatch) => ({
      startLoginGoogle: () => dispatch(startLoginGoogle()),
-     startLoginGithub: () => dispatch(startLoginGithub())
+     startLoginGithub: () => dispatch(startLoginGithub()),
+     startLoginTwitter: () => dispatch(startLoginTwitter())
 })
 
 export default connect(undefined, mapDispatchToProps)(LoginPage)
